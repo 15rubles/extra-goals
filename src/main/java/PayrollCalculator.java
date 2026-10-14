@@ -13,7 +13,7 @@ public class PayrollCalculator {
 
         if (hours > 40) {
             int overtime = hours - 40;
-            System.out.printf("%s's gross pay is %.2f", name, payRate * hours + payRate * overtime * 1.5);
+            System.out.printf("%s's gross pay is %.2f", name, payRate * 40 + payRate * overtime * 1.5);
         } else {
             System.out.printf("%s's gross pay is %.2f", name, payRate * hours);
         }
