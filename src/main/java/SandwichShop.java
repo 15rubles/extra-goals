@@ -9,20 +9,20 @@ public class SandwichShop {
         boolean loaded = readYesNo(scanner);
         int age = readIntInRange(scanner, "Your age: ", 0, 1000);
 
-        double price = size == 1 ? 5.45 : 8.95;
-        if (loaded) {
-            price += size == 1 ? 1 : 1.75;
-        }
+        double total = calculateTotalPrice(size, loaded, age);
 
-        double discount = 0;
-        if (age <= 17) {
-            discount = 0.1;
-        } else if (age >= 65) {
-            discount = 0.2;
-        }
-
-        double total = price * (1 - discount);
         System.out.printf("Your sandwich costs: $%.2f%n", total);
+    }
+
+    static double calculateTotalPrice(int size, boolean loaded, int age) {
+        double price = (size == 1) ? 5.45 : 8.95;
+        if (loaded) {
+            price += (size == 1) ? 1 : 1.75;
+        }
+
+        double discount = (age <= 17) ? 0.1 : (age >= 65) ? 0.2 : 0;
+
+        return price * (1 - discount);
     }
 
     static int readIntInRange(Scanner scanner, String message, int min, int max) {
